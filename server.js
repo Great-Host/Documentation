@@ -35,7 +35,9 @@ function getDirectoryStructure(dirPath, basePath = '') {
   const items = [];
   
   try {
-    const files = fs.readdirSync(dirPath);
+    const files = fs.readdirSync(dirPath).sort((a, b) => {
+      return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+    });
     
     files.forEach(file => {
       const fullPath = path.join(dirPath, file);
