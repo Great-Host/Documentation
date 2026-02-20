@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreatHost - Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" id="hljs-theme">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app" id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <img src="img/logo.png" alt="GreatHost Logo">
+                    <span>GreatHost</span>
+                </div>
+            </div>
+            
+            <!-- Categorías principales -->
+            <nav class="main-nav">
+                <a href="#" class="nav-item" data-category="VPS">
+                    <i class="fas fa-server"></i>
+                    VPS
+                </a>
+                <a href="#" class="nav-item" data-category="GameServer">
+                    <i class="fas fa-gamepad"></i>
+                    GameServer
+                </a>
+                <a href="#" class="nav-item" data-category="IDE">
+                    <i class="fas fa-code"></i>
+                    IDE
+                </a>
+                <a href="#" class="nav-item" data-category="Services">
+                    <i class="fas fa-cogs"></i>
+                    Services
+                </a>
+            </nav>
+            
+            <div class="header-right">
+                <!-- Buscador -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search documentation..." class="search-input">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+                
+                <!-- Toggle tema -->
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+        
+        <div class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-content">
+                    <div class="sidebar-header">
+                        <h3>Navigation</h3>
+                    </div>
+                    <nav class="sidebar-nav" id="sidebarNav">
+                        <!-- La navegación se carga dinámicamente -->
+                    </nav>
+                </div>
+            </aside>
+            
+            <!-- Contenido principal -->
+            <main class="content" id="content">
+                <div class="content-wrapper">
+                    <div class="welcome-screen" id="welcomeScreen">
+                        <div class="welcome-content">
+                            <h1>
+                                <i class="fas fa-rocket"></i>
+                                Welcome to GreatHost
+                            </h1>
+                            <p class="welcome-subtitle">Your complete hosting platform</p>
+                            
+                            <div class="features-grid">
+                                <div class="feature-card" data-category="VPS">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-server"></i>
+                                    </div>
+                                    <h3>VPS</h3>
+                                    <p>Virtual private servers with dedicated resources and full control</p>
+                                </div>
+                                
+                                <div class="feature-card" data-category="GameServer">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <h3>Game Servers</h3>
+                                    <p>Gaming-optimized servers with the best performance</p>
+                                </div>
+                                
+                                <div class="feature-card" data-category="IDE">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <h3>Cloud IDE</h3>
+                                    <p>Develop from anywhere with our integrated environments</p>
+                                </div>
+                                
+                                <div class="feature-card" data-category="Services">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <h3>Servicios</h3>
+                                    <p>Complementary services to power up your project</p>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-start">
+                                <h2>Quick Start</h2>
+                                <p>Select a category above or use the sidebar navigation to explore our documentation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="doc-content" id="docContent" style="display: none;">
+                        <div class="breadcrumb" id="breadcrumb"></div>
+                        <article class="article" id="article">
+                            <!-- El contenido se carga aquí dinámicamente -->
+                        </article>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Loading spinner -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
