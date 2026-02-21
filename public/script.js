@@ -275,6 +275,10 @@ function showDocContent(data) {
   // Actualizar contenido
   elements.article.innerHTML = data.content;
   elements.article.classList.add('fade-in');
+ 
+  normalizeInternalLinks();
+ 
+  insertPrevNextControls();
   
   // Scroll al top
   elements.article.scrollTop = 0;
@@ -321,6 +325,96 @@ function updateActiveNavigation(path) {
       category.classList.remove('collapsed');
     }
   }
+}
+
+function normalizeInternalLinks() {
+  elements.article.querySelectorAll('a[href^="/"]').forEach(a => {
+    try {
+      const url = new URL(a.getAttribute('href'), window.location.origin);
+      const path = url.pathname.replace(/^\/+/, '');
+      if (path && !path.startsWith('http')) {
+        a.setAttribute('href', `#${path}`);
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          navigateToDoc(path);
+        });
+      }
+    } catch (_) {
+    }
+  });
+  
+  elements.article.querySelectorAll('p').forEach(p => {
+    const text = p.textContent || '';
+    if (text.includes('Previous:') || text.includes('Next:')) {
+      p.remove();
+    }
+  });
+}
+
+function insertPrevNextControls() {
+  const path = AppState.currentPath;
+  if (!path) return;
+  
+  const [category] = path.split('/');
+  const cat = AppState.navigation.find(n => n.name === category);
+  if (!cat || !cat.children) return;
+  
+  const files = cat.children.filter(c => c.type === 'file');
+  const index = files.findIndex(f => f.path === path);
+  if (index === -1) return;
+  
+  const prev = index > 0 ? files[index - 1] : null;
+  const next = index < files.length - 1 ? files[index + 1] : null;
+  
+  const navDiv = document.createElement('div');
+  navDiv.style.cssText = `
+    display:flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+  `;
+  
+  const btnStyle = `
+    display:inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color, #1E3A8A);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+  `;
+  
+  const left = document.createElement('div');
+  const right = document.createElement('div');
+  
+  if (prev) {
+    const a = document.createElement('a');
+    a.href = `#${prev.path}`;
+    a.style.cssText = btnStyle;
+    a.textContent = `← Previous: ${prev.name}`;
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigateToDoc(prev.path);
+    });
+    left.appendChild(a);
+  }
+  
+  if (next) {
+    const a = document.createElement('a');
+    a.href = `#${next.path}`;
+    a.style.cssText = btnStyle;
+    a.textContent = `Next: ${next.name} →`;
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigateToDoc(next.path);
+    });
+    right.appendChild(a);
+  }
+  
+  navDiv.appendChild(left);
+  navDiv.appendChild(right);
+  elements.article.appendChild(navDiv);
 }
 
 function showWelcome() {
