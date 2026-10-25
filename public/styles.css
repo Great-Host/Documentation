@@ -101,6 +101,24 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--accent-color);
+  text-decoration: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .logo img {
@@ -162,6 +180,12 @@ body {
   color: var(--text-primary);
   font-size: 0.9rem;
   transition: all 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
 }
 
 .search-input:focus {
@@ -198,6 +222,9 @@ body {
 }
 
 .search-result-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   padding: 0.75rem;
   border-bottom: 1px solid var(--border-color);
   cursor: pointer;
@@ -210,6 +237,12 @@ body {
 
 .search-result-item:last-child {
   border-bottom: none;
+}
+
+.search-result-title,
+.search-result-content,
+.search-result-path {
+  display: block;
 }
 
 .search-result-title {
@@ -277,7 +310,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.sidebar-header h3 {
+.sidebar-header .sidebar-title {
   color: var(--text-primary);
   font-size: 1.1rem;
   font-weight: 600;
@@ -296,6 +329,11 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  width: 100%;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
   padding: 0.5rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -391,6 +429,8 @@ body {
 }
 
 .feature-card {
+  display: block;
+  text-decoration: none;
   background-color: var(--bg-secondary);
   padding: 2rem;
   border-radius: 12px;
@@ -419,8 +459,9 @@ body {
   font-size: 1.5rem;
 }
 
-.feature-card h3 {
+.feature-card h2 {
   margin-bottom: 0.5rem;
+  font-size: 1.25rem;
   color: var(--text-primary);
 }
 
@@ -445,6 +486,82 @@ body {
   color: var(--text-primary);
 }
 
+.quick-links {
+  list-style: none;
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+}
+
+.quick-links a,
+.doc-list a {
+  color: var(--accent-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.quick-links a:hover,
+.doc-list a:hover {
+  text-decoration: underline;
+}
+
+.article .doc-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1.5rem;
+}
+
+.article .doc-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0;
+}
+
+.article .doc-list li p {
+  margin: 0.25rem 0 0;
+  color: var(--text-secondary);
+}
+
+.doc-updated {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+}
+
+.article .doc-updated {
+  color: var(--text-muted);
+}
+
+.doc-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.article .pager-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.article .pager-link:hover {
+  background-color: var(--accent-hover);
+  text-decoration: none;
+}
+
+.article img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 /* Contenido de documentación */
 .breadcrumb {
   margin-bottom: 1rem;
@@ -459,6 +576,11 @@ body {
 
 .breadcrumb a:hover {
   text-decoration: underline;
+}
+
+.breadcrumb-sep {
+  margin: 0 0.25rem;
+  color: var(--text-muted);
 }
 
 .article {
