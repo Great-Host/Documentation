@@ -173,6 +173,7 @@ function layoutHtml({ title, sidebar, body }) {
         <a href="#GameServer" class="nav-item" data-category="GameServer"><i class="fas fa-gamepad"></i> GameServer</a>
         <a href="#IDE" class="nav-item" data-category="IDE"><i class="fas fa-code"></i> IDE</a>
         <a href="#Services" class="nav-item" data-category="Services"><i class="fas fa-cogs"></i> Services</a>
+        <a href="#Reseller" class="nav-item" data-category="Reseller"><i class="fas fa-store"></i> Reseller</a>
       </nav>
       <div class="header-right">
         <div class="search-container">
@@ -236,6 +237,11 @@ function welcomeHtml() {
           <div class="feature-icon"><i class="fas fa-cogs"></i></div>
           <h3>Servicios</h3>
           <p>Complementary services to power up your project</p>
+        </a>
+        <a class="feature-card" href="#Reseller" data-category="Reseller">
+          <div class="feature-icon"><i class="fas fa-store"></i></div>
+          <h3>Reseller</h3>
+          <p>Sell game servers and VPS under your own brand, with your own store or API</p>
         </a>
       </div>
       <div class="quick-start">
