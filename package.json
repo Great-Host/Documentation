@@ -1,7 +1,7 @@
 {
   "name": "greathost-docs",
-  "version": "1.0.0",
-  "description": "Sistema de documentación para GreatHost con navegación automática",
+  "version": "1.2.0",
+  "description": "Sistema de documentación para GreatHost",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
